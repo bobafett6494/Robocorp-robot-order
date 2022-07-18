@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.7.5 on win32)" generated="20220718 11:05:13.287" rpa="true" schemaversion="3">
+<suite id="s1" name="Tasks" source="c:\Users\StephanKnoell\Code\Robocorp\robot-order\tasks.robot">
+<test id="s1-t1" name="Order robots from RobotSpareBin Industries Inc" line="28">
+<kw name="Get Secret" library="RPA.Robocorp.Vault">
+<var>${robot-order-url}</var>
+<arg>robot-order-url</arg>
+<doc>Read a secret from the configured source, e.g. Robocorp Vault,
+and return it as a ``Secret`` object.</doc>
+<msg timestamp="20220718 11:05:30.493" level="INFO">Protecting keyword: RPA.Robocorp.Vault.Get Secret</msg>
+<msg timestamp="20220718 11:05:30.522" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="FAIL" starttime="20220718 11:05:30.406" endtime="20220718 11:05:30.512"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${robot-order-url}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220718 11:05:30.553" endtime="20220718 11:05:30.565"/>
+</kw>
+<kw name="Setup Directories">
+<status status="NOT RUN" starttime="20220718 11:05:30.571" endtime="20220718 11:05:30.573"/>
+</kw>
+<kw name="Open website">
+<arg>${robot-order-url}</arg>
+<status status="NOT RUN" starttime="20220718 11:05:30.577" endtime="20220718 11:05:30.586"/>
+</kw>
+<kw name="Get orders">
+<var>${orders}</var>
+<status status="NOT RUN" starttime="20220718 11:05:30.611" endtime="20220718 11:05:30.625"/>
+</kw>
+<for flavor="IN">
+<var>${row}</var>
+<value>@{orders}</value>
+<iter>
+<var name="${row}"/>
+<kw name="Fill the form">
+<arg>${row}</arg>
+<status status="NOT RUN" starttime="20220718 11:05:30.640" endtime="20220718 11:05:30.643"/>
+</kw>
+<kw name="Take screenshot of robot">
+<var>${screenshot}</var>
+<arg>${row}[Order number]</arg>
+<status status="NOT RUN" starttime="20220718 11:05:30.652" endtime="20220718 11:05:30.666"/>
+</kw>
+<kw name="Click Order">
+<status status="NOT RUN" starttime="20220718 11:05:30.676" endtime="20220718 11:05:30.682"/>
+</kw>
+<kw name="Save receipt as PDF">
+<var>${pdf}</var>
+<arg>${row}[Order number]</arg>
+<status status="NOT RUN" starttime="20220718 11:05:30.693" endtime="20220718 11:05:30.696"/>
+</kw>
+<kw name=" Embed robot screenshot to receipt PDF file">
+<arg>${screenshot}</arg>
+<arg>${pdf}</arg>
+<status status="NOT RUN" starttime="20220718 11:05:30.699" endtime="20220718 11:05:30.711"/>
+</kw>
+<kw name="Click New Order">
+<status status="NOT RUN" starttime="20220718 11:05:30.750" endtime="20220718 11:05:30.781"/>
+</kw>
+<status status="NOT RUN" starttime="20220718 11:05:30.637" endtime="20220718 11:05:30.783"/>
+</iter>
+<status status="NOT RUN" starttime="20220718 11:05:30.633" endtime="20220718 11:05:30.787"/>
+</for>
+<kw name="Create ZIP">
+<status status="NOT RUN" starttime="20220718 11:05:30.793" endtime="20220718 11:05:30.795"/>
+</kw>
+<kw name="Cleanup Directories">
+<status status="NOT RUN" starttime="20220718 11:05:30.801" endtime="20220718 11:05:30.803"/>
+</kw>
+<kw name="Close Browser" library="RPA.Browser.Selenium" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220718 11:05:30.835" endtime="20220718 11:05:30.880"/>
+</kw>
+<status status="FAIL" starttime="20220718 11:05:30.388" endtime="20220718 11:05:30.928">TypeError: type object argument after ** must be a mapping, not str</status>
+</test>
+<doc>Orders robots from RobotSpareBin Industries Inc.
+Saves the order HTML receipt as a PDF file.
+Saves the screenshot of the ordered robot.
+Embeds the screenshot of the robot to the PDF receipt.
+Creates ZIP archive of the receipts and the images.</doc>
+<status status="FAIL" starttime="20220718 11:05:13.373" endtime="20220718 11:05:30.968"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Tasks">Tasks</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
